@@ -1,20 +1,19 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'login_response.dart';
+part of 'auth_response.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-LoginResponse _$LoginResponseFromJson(Map<String, dynamic> json) =>
-    LoginResponse(
-      accessToken: json['access_token'] as String,
-      refreshToken: json['refresh_token'] as String,
-      tokenType: json['token_type'] as String,
-      expiresIn: (json['expires_in'] as num).toInt(),
-      expiresAt: (json['expires_at'] as num).toInt(),
-      user: User.fromJson(json['user'] as Map<String, dynamic>),
-    );
+AuthResponse _$AuthResponseFromJson(Map<String, dynamic> json) => AuthResponse(
+  accessToken: json['access_token'] as String,
+  refreshToken: json['refresh_token'] as String,
+  tokenType: json['token_type'] as String,
+  expiresIn: (json['expires_in'] as num).toInt(),
+  expiresAt: (json['expires_at'] as num).toInt(),
+  user: User.fromJson(json['user'] as Map<String, dynamic>),
+);
 
 User _$UserFromJson(Map<String, dynamic> json) => User(
   id: json['id'] as String,

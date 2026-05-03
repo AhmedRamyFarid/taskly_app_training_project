@@ -17,6 +17,11 @@ class LoginBlocListener extends StatelessWidget {
           success: (data) {
             Navigator.pushReplacementNamed(context, Routes.homeScreen);
           },
+          error: (error) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(content: Text(error), backgroundColor: Colors.red),
+            );
+          },
         );
       },
       child: const SizedBox.shrink(),

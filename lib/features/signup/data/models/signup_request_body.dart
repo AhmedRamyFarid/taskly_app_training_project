@@ -26,10 +26,7 @@ class SignUpUserData {
   @JsonKey(name: 'department')
   final String? jobTitle;
 
-  const SignUpUserData({
-    required this.name,
-    this.jobTitle,
-  });
+  const SignUpUserData({required this.name, this.jobTitle});
 
   Map<String, dynamic> toJson() => _$SignUpUserDataToJson(this);
 }

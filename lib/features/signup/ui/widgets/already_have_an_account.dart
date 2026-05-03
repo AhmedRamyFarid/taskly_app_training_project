@@ -3,7 +3,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:taskly_app/core/helpers/extensions.dart';
-import 'package:taskly_app/core/helpers/font_weigt.dart';
+import 'package:taskly_app/core/helpers/font_weight.dart';
 import 'package:taskly_app/core/routing/routes.dart';
 import 'package:taskly_app/core/theming/app_colors.dart';
 

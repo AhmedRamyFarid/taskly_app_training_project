@@ -1,7 +1,6 @@
 import 'package:dio/dio.dart';
-
-import 'api_constants.dart';
-import 'api_error_model.dart';
+import 'package:taskly_app/core/networking/api_constants.dart';
+import 'package:taskly_app/core/networking/api_error_model.dart';
 
 enum DataSource {
   noContent,
@@ -18,8 +17,6 @@ enum DataSource {
   noInternetConnection,
   defaultError,
 }
-
-
 
 class ResponseCode {
   // success codes
@@ -44,8 +41,6 @@ class ResponseCode {
   static const int defaultError = -7;
 }
 
-
-
 class ResponseMessage {
   static const String noContent = ApiErrors.noContent;
   static const String badRequest = ApiErrors.badRequestError;
@@ -63,8 +58,6 @@ class ResponseMessage {
   static const String noInternetConnection = ApiErrors.noInternetError;
   static const String defaultError = ApiErrors.defaultError;
 }
-
-
 
 extension DataSourceExtension on DataSource {
   ApiErrorModel getFailure() {
@@ -150,8 +143,6 @@ extension DataSourceExtension on DataSource {
   }
 }
 
-
-
 class ErrorHandler implements Exception {
   final ApiErrorModel failure;
 
@@ -161,14 +152,10 @@ class ErrorHandler implements Exception {
     if (error is DioException) {
       return ErrorHandler.handle(_handleDioError(error));
     } else {
-      return ErrorHandler.handle(
-        DataSource.defaultError.getFailure(),
-      );
+      return ErrorHandler.handle(DataSource.defaultError.getFailure());
     }
   }
 }
-
-
 
 ApiErrorModel _handleDioError(DioException error) {
   switch (error.type) {
@@ -189,18 +176,32 @@ ApiErrorModel _handleDioError(DioException error) {
 
     case DioExceptionType.badResponse:
       final data = error.response?.data;
-      if (data is Map<String, dynamic>) {
+      if (data != null && data is Map<String, dynamic>) {
         return ApiErrorModel.fromJson(data);
       }
-      return DataSource.defaultError.getFailure();
+      final statusCode = error.response?.statusCode;
+      switch (statusCode) {
+        case 400:
+          return DataSource.badRequest.getFailure();
+        case 401:
+          return DataSource.unauthorized.getFailure();
+        case 403:
+          return DataSource.forbidden.getFailure();
+        case 404:
+          return DataSource.notFound.getFailure();
+        case 500:
+        case 502:
+        case 503:
+          return DataSource.internalServerError.getFailure();
+        default:
+          return DataSource.defaultError.getFailure();
+      }
 
     case DioExceptionType.badCertificate:
     case DioExceptionType.unknown:
       return DataSource.defaultError.getFailure();
   }
 }
-
-
 
 class ApiInternalStatus {
   static const int success = 0;

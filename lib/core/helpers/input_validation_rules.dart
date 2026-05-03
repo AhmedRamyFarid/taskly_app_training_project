@@ -2,7 +2,6 @@ class NameRules {
   static final RegExp nameRegex = RegExp(
     r'^(?!.*\s{2,})[A-Za-z\u0600-\u06FF]+(?:\s[A-Za-z\u0600-\u06FF]+)*$',
   );
-
   static bool hasValidLength(String name) {
     return name.length >= 3 && name.length <= 50;
   }
@@ -14,7 +13,6 @@ class NameRules {
 
 class EmailRules {
   static final RegExp emailRegex = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
-
   static bool isValidEmail(String email) {
     return emailRegex.hasMatch(email);
   }

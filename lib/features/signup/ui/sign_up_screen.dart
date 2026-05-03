@@ -41,7 +41,9 @@ class SignUpScreen extends StatelessWidget {
                               isEnabled: !isLoading,
                               onPressed: () {
                                 final cubit = context.read<SignUpCubit>();
-                                cubit.emitSignupStates();
+                                if (cubit.formKey.currentState!.validate()) {
+                                  cubit.emitSignupStates();
+                                }
                               },
                             );
                           },

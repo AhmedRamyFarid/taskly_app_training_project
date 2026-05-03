@@ -2,7 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:taskly_app/core/networking/api_result.dart';
-import 'package:taskly_app/features/login/data/models/login_response.dart';
+import 'package:taskly_app/features/login/data/models/auth_response.dart';
 import 'package:taskly_app/features/signup/data/models/signup_request_body.dart';
 import 'package:taskly_app/features/signup/data/repos/signup_repo.dart';
 
@@ -23,7 +23,6 @@ class SignUpCubit extends Cubit<SignUpState> {
   final jobTitleController = TextEditingController();
 
   Future<void> emitSignupStates() async {
-    if (!formKey.currentState!.validate()) return;
     emit(const SignUpState.loading());
 
     try {
@@ -43,22 +42,21 @@ class SignUpCubit extends Cubit<SignUpState> {
           emit(SignUpState.success(data));
         },
         failure: (error) {
-          emit(SignUpState.error(error: error.message ?? '',));
+          emit(SignUpState.error(error: error.message ?? ''));
         },
       );
     } catch (e) {
       emit(SignUpState.error(error: e.toString()));
     }
+  }
 
-    @override
-    // ignore: unused_element
-    Future<void> close() {
-      nameController.dispose();
-      emailController.dispose();
-      passwordController.dispose();
-      confirmPasswordController.dispose();
-      jobTitleController.dispose();
-      return super.close();
-    }
+  @override
+  Future<void> close() {
+    nameController.dispose();
+    emailController.dispose();
+    passwordController.dispose();
+    confirmPasswordController.dispose();
+    jobTitleController.dispose();
+    return super.close();
   }
 }

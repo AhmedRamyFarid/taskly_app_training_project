@@ -26,5 +26,5 @@ User _$UserFromJson(Map<String, dynamic> json) => User(
 
 UserMetadata _$UserMetadataFromJson(Map<String, dynamic> json) => UserMetadata(
   name: json['name'] as String,
-  department: json['department'] as String,
+  jobTitle: json['department'] as String,
 );

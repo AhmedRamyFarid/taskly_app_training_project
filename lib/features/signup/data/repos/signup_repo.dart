@@ -10,14 +10,15 @@ class SignUpRepo {
 
   SignUpRepo(this._apiService);
 
-  Future<ApiResult<AuthResponse>> signup(SignUpRequestBody body) async {
+  Future<ApiResult<AuthResponse>> signup(SignUpRequestBody signUpRequestBody) async {
     try {
-      final response = await _apiService.signup(body);
+      final response = await _apiService.signup(signUpRequestBody);
       return ApiResult.success(response);
     } on DioException catch (error) {
-      return ApiResult.failure(ErrorHandler.from(error).failure);
-    } catch (_) {
-      return ApiResult.failure(ErrorHandler.from(null).failure);
+      final apiError = ErrorHandler.from(error).failure;
+      return ApiResult.failure(apiError);
+    } catch (error) {
+      return ApiResult.failure(DataSource.defaultError.getFailure());
     }
   }
 }

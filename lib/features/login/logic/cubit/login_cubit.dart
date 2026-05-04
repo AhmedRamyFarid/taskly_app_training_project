@@ -7,21 +7,22 @@ import 'package:taskly_app/features/login/logic/cubit/login_state.dart';
 
 class LoginCubit extends Cubit<LoginState> {
   final LoginRepo _loginRepo;
+
   LoginCubit(this._loginRepo) : super(const LoginState.initial());
 
+  final formKey = GlobalKey<FormState>();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
-  final formKey = GlobalKey<FormState>();
 
   Future<void> emitLoginStates() async {
     emit(const LoginState.loading());
 
-    final body = LoginRequestBody(
-      email: emailController.text,
-      password: passwordController.text,
-    );
-
     try {
+      final body = LoginRequestBody(
+        email: emailController.text,
+        password: passwordController.text,
+      );
+
       final response = await _loginRepo.login(body);
 
       response.when(

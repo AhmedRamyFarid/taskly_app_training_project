@@ -1,9 +1,11 @@
-part of 'signup_cubit.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
+
+part 'signup_state.freezed.dart';
 
 @freezed
-class SignUpState with _$SignUpState {
-  const factory SignUpState.initial() = Initial;
+class SignUpState<T> with _$SignUpState<T> {
+  const factory SignUpState.initial() = _Initial;
   const factory SignUpState.loading() = Loading;
-  const factory SignUpState.success(AuthResponse data) = Success;
+  const factory SignUpState.success(T data) = Success<T>;
   const factory SignUpState.error({required String error}) = Error;
 }

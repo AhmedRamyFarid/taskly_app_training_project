@@ -56,9 +56,11 @@ class User {
 @JsonSerializable(createToJson: false)
 class UserMetadata {
   final String name;
-  final String department;
 
-  UserMetadata({required this.name, required this.department});
+  @JsonKey(name: 'department')
+  final String jobTitle;
+
+  UserMetadata({required this.name, required this.jobTitle});
 
   factory UserMetadata.fromJson(Map<String, dynamic> json) =>
       _$UserMetadataFromJson(json);

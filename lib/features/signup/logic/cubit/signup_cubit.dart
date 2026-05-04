@@ -1,21 +1,16 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:taskly_app/core/networking/api_result.dart';
-import 'package:taskly_app/features/login/data/models/auth_response.dart';
 import 'package:taskly_app/features/signup/data/models/signup_request_body.dart';
 import 'package:taskly_app/features/signup/data/repos/signup_repo.dart';
-
-part 'signup_state.dart';
-part 'signup_cubit.freezed.dart';
+import 'package:taskly_app/features/signup/logic/cubit/signup_state.dart';
 
 class SignUpCubit extends Cubit<SignUpState> {
-  final SignUpRepo _repo;
+  final SignUpRepo _signupRepo;
 
-  SignUpCubit(this._repo) : super(const SignUpState.initial());
+  SignUpCubit(this._signupRepo) : super(const SignUpState.initial());
 
-  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
-
+  final formKey = GlobalKey<FormState>();
   final nameController = TextEditingController();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
@@ -35,11 +30,11 @@ class SignUpCubit extends Cubit<SignUpState> {
         ),
       );
 
-      final result = await _repo.signup(body);
+      final result = await _signupRepo.signup(body);
 
       result.when(
-        success: (data) {
-          emit(SignUpState.success(data));
+        success: (signupResponse) {
+          emit(SignUpState.success(signupResponse));
         },
         failure: (error) {
           emit(SignUpState.error(error: error.message ?? ''));

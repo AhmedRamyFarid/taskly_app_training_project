@@ -5,6 +5,7 @@ import 'package:taskly_app/core/helpers/spacing.dart';
 import 'package:taskly_app/core/widgets/app_text_button.dart';
 import 'package:taskly_app/core/widgets/header_for_signup_and_login.dart';
 import 'package:taskly_app/features/signup/logic/cubit/signup_cubit.dart';
+import 'package:taskly_app/features/signup/logic/cubit/signup_state.dart';
 import 'package:taskly_app/features/signup/ui/widgets/already_have_an_account.dart';
 import 'package:taskly_app/features/signup/ui/widgets/create_your_workspace.dart';
 import 'package:taskly_app/features/signup/ui/widgets/sign_up_bloc_listener.dart';
@@ -18,6 +19,7 @@ class SignUpScreen extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const HeaderForSignupAndLogin(),
             Expanded(

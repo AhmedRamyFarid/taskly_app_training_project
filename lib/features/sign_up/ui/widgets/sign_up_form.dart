@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:taskly_app/core/helpers/input_validation_rules.dart';
+import 'package:taskly_app/core/helpers/app_regex.dart';
 import 'package:taskly_app/core/helpers/spacing.dart';
 import 'package:taskly_app/core/widgets/app_text_form_field.dart';
 import 'package:taskly_app/core/widgets/security_requirements.dart';

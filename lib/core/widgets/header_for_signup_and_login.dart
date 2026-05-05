@@ -17,7 +17,7 @@ class HeaderForSignupAndLogin extends StatelessWidget {
         height: 80.h,
         child: Row(
           children: [
-            SvgPicture.asset('assets/Icon.svg', height: 20.h, width: 18.w),
+            SvgPicture.asset('assets/svgs/Icon.svg', height: 20.h, width: 18.w),
             horizontalSpace(7),
             Text(
               'Taskly'.toUpperCase(),

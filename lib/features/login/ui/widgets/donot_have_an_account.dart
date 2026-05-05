@@ -33,7 +33,7 @@ class DonotHaveAnAccount extends StatelessWidget {
             ),
             recognizer: TapGestureRecognizer()
               ..onTap = () {
-                context.pushReplacementNamed(Routes.signupScreen);
+                context.pushReplacementNamed(Routes.signUpScreen);
               },
           ),
         ],

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:taskly_app/core/helpers/extensions.dart';
 import 'package:taskly_app/core/helpers/spacing.dart';
+import 'package:taskly_app/core/routing/routes.dart';
 import 'package:taskly_app/core/widgets/app_text_form_field.dart';
 import 'package:taskly_app/features/login/logic/cubit/login_cubit.dart';
 
@@ -54,6 +56,7 @@ class _EmailAndPasswordState extends State<EmailAndPassword> {
           AppTextFormField(
             label: "Password".toUpperCase(),
             hintText: "Enter password",
+            keyboardType: TextInputType.visiblePassword,
             isObscureText: isObscureText,
             controller: context.read<LoginCubit>().passwordController,
             suffixIcon: GestureDetector(
@@ -74,7 +77,9 @@ class _EmailAndPasswordState extends State<EmailAndPassword> {
               }
               return null;
             },
-            onForgotPassword: () {},
+            onForgotPassword: () {
+              context.pushNamed(Routes.forgotPasswordScreen);
+            },
           ),
         ],
       ),

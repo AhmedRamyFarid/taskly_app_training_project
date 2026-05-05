@@ -4,12 +4,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:taskly_app/core/helpers/spacing.dart';
 import 'package:taskly_app/core/widgets/app_text_button.dart';
 import 'package:taskly_app/core/widgets/header_for_signup_and_login.dart';
-import 'package:taskly_app/features/signup/logic/cubit/signup_cubit.dart';
-import 'package:taskly_app/features/signup/logic/cubit/signup_state.dart';
-import 'package:taskly_app/features/signup/ui/widgets/already_have_an_account.dart';
-import 'package:taskly_app/features/signup/ui/widgets/create_your_workspace.dart';
-import 'package:taskly_app/features/signup/ui/widgets/sign_up_bloc_listener.dart';
-import 'package:taskly_app/features/signup/ui/widgets/sign_up_form.dart';
+import 'package:taskly_app/features/sign_up/logic/cubit/signup_cubit.dart';
+import 'package:taskly_app/features/sign_up/logic/cubit/signup_state.dart';
+import 'package:taskly_app/features/sign_up/ui/widgets/already_have_an_account.dart';
+import 'package:taskly_app/features/sign_up/ui/widgets/create_your_workspace.dart';
+import 'package:taskly_app/features/sign_up/ui/widgets/sign_up_bloc_listener.dart';
+import 'package:taskly_app/features/sign_up/ui/widgets/sign_up_form.dart';
 
 class SignUpScreen extends StatelessWidget {
   const SignUpScreen({super.key});

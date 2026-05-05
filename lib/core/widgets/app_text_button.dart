@@ -9,6 +9,10 @@ class AppTextButton extends StatelessWidget {
   final VoidCallback onPressed;
   final bool isLoading;
   final bool isEnabled;
+  final int radius;
+  final int fontSize;
+  final double height;
+  final double width;
 
   const AppTextButton({
     super.key,
@@ -16,6 +20,10 @@ class AppTextButton extends StatelessWidget {
     required this.onPressed,
     this.isLoading = false,
     this.isEnabled = true,
+    this.radius = 8,
+    this.fontSize = 16,
+    this.height = 56,
+    this.width = 342,
   });
 
   @override
@@ -24,10 +32,10 @@ class AppTextButton extends StatelessWidget {
       onPressed: isEnabled ? onPressed : null,
       style: ButtonStyle(
         shape: WidgetStateProperty.all(
-          RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+          RoundedRectangleBorder(borderRadius: BorderRadius.circular(radius.r)),
         ),
         backgroundColor: WidgetStateProperty.all(AppColors.primary),
-        fixedSize: WidgetStateProperty.all(Size(342.w, 56.h)),
+        fixedSize: WidgetStateProperty.all(Size(width.w, height.h)),
       ),
       child: isLoading
           ? const SizedBox(
@@ -41,7 +49,7 @@ class AppTextButton extends StatelessWidget {
           : Text(
               text,
               style: GoogleFonts.inter(
-                fontSize: 16.sp,
+                fontSize: fontSize.sp,
                 fontWeight: FontWeightHelper.semiBold,
                 color: Colors.white,
               ),

@@ -15,6 +15,9 @@ class AppTextFormField extends StatelessWidget {
   final Widget? suffixIcon;
   final TextEditingController? controller;
   final FormFieldValidator<String>? validator;
+  final double contentPaddingHorizontal;
+  final double contentPaddingVertical;
+  final int radius;
 
   const AppTextFormField({
     super.key,
@@ -27,6 +30,9 @@ class AppTextFormField extends StatelessWidget {
     this.isObscureText = false,
     this.suffixIcon,
     this.validator,
+    this.contentPaddingHorizontal = 16,
+    this.contentPaddingVertical = 18,
+    this.radius = 8,
   });
 
   @override
@@ -84,12 +90,12 @@ class AppTextFormField extends StatelessWidget {
                     ? const Color(0xFFFFDAD6)
                     : AppColors.surfaceHighest,
                 border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(8),
+                  borderRadius: BorderRadius.circular(radius.r),
                   borderSide: BorderSide.none,
                 ),
                 contentPadding: EdgeInsets.symmetric(
-                  horizontal: 16.w,
-                  vertical: 18.h,
+                  horizontal: contentPaddingHorizontal.w,
+                  vertical: contentPaddingVertical.h,
                 ),
                 hintText: hintText,
                 hintStyle: GoogleFonts.inter(
@@ -97,6 +103,7 @@ class AppTextFormField extends StatelessWidget {
                       ? const Color(0xFF93000A)
                       : const Color(0xFF737685),
                   fontSize: 16.sp,
+                  fontWeight: FontWeightHelper.regular,
                 ),
                 suffixIcon: suffixIcon,
                 errorText: formFieldState.errorText,

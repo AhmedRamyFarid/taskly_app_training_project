@@ -4,7 +4,7 @@ import 'package:taskly_app/core/helpers/input_validation_rules.dart';
 import 'package:taskly_app/core/helpers/spacing.dart';
 import 'package:taskly_app/core/widgets/app_text_form_field.dart';
 import 'package:taskly_app/core/widgets/security_requirements.dart';
-import 'package:taskly_app/features/signup/logic/cubit/signup_cubit.dart';
+import 'package:taskly_app/features/sign_up/logic/cubit/signup_cubit.dart';
 
 class SignUpForm extends StatelessWidget {
   const SignUpForm({super.key});
@@ -18,6 +18,7 @@ class SignUpForm extends StatelessWidget {
           AppTextFormField(
             label: "Full Name".toUpperCase(),
             hintText: "Enter your full name",
+            keyboardType: TextInputType.name,
             controller: context.read<SignUpCubit>().nameController,
             validator: (value) {
               if (value == null || value.trim().isEmpty) {
@@ -60,6 +61,7 @@ class SignUpForm extends StatelessWidget {
           AppTextFormField(
             label: "Password".toUpperCase(),
             hintText: "Min. 8 characters",
+            keyboardType: TextInputType.visiblePassword,
             controller: context.read<SignUpCubit>().passwordController,
             showToggleIcon: false,
             validator: (value) {
@@ -96,6 +98,7 @@ class SignUpForm extends StatelessWidget {
           AppTextFormField(
             label: "Confirm Password".toUpperCase(),
             hintText: "Repeat your password",
+            keyboardType: TextInputType.visiblePassword,
             controller: context.read<SignUpCubit>().confirmPasswordController,
             showToggleIcon: false,
             validator: (value) {

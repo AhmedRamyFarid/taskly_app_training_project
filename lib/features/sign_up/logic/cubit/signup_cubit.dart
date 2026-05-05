@@ -1,9 +1,9 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:taskly_app/core/networking/api_result.dart';
-import 'package:taskly_app/features/signup/data/models/signup_request_body.dart';
-import 'package:taskly_app/features/signup/data/repos/signup_repo.dart';
-import 'package:taskly_app/features/signup/logic/cubit/signup_state.dart';
+import 'package:taskly_app/features/sign_up/data/models/signup_request_body.dart';
+import 'package:taskly_app/features/sign_up/data/repos/signup_repo.dart';
+import 'package:taskly_app/features/sign_up/logic/cubit/signup_state.dart';
 
 class SignUpCubit extends Cubit<SignUpState> {
   final SignUpRepo _signupRepo;
